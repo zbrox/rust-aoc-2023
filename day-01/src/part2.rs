@@ -103,7 +103,7 @@ zoneight234
     fn test_get_calibration_values() {
         assert_eq!(13, get_calibration_values("123"));
         assert_eq!(83, get_calibration_values("83"));
-        assert_eq!(13, get_calibration_values("123"));
+        assert_eq!(77, get_calibration_values("7"));
         assert_eq!(32, get_calibration_values("39772"));
     }
 }
