@@ -6,6 +6,6 @@ fn main() -> anyhow::Result<()> {
 
     let file = include_str!("../../input2.txt");
     let result = solve(file)?;
-    println!("{}", result);
+    println!("SOLUTION: {}", result);
     Ok(())
 }
