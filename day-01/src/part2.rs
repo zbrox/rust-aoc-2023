@@ -30,6 +30,14 @@ fn get_calibration_values(digits: &str) -> u32 {
 
 fn parse_digit(input: &str) -> IResult<&str, &str> {
     alt((
+        map(tag("oneight"), |_| "18"),
+        map(tag("twone"), |_| "21"),
+        map(tag("sevenine"), |_| "79"),
+        map(tag("nineight"), |_| "79"),
+        map(tag("threeight"), |_| "38"),
+        map(tag("fiveight"), |_| "58"),
+        map(tag("eightwo"), |_| "82"),
+        map(tag("eighthree"), |_| "83"),
         map(tag("one"), |_| "1"),
         map(tag("two"), |_| "2"),
         map(tag("three"), |_| "3"),
@@ -80,7 +88,7 @@ zoneight234
     #[test]
     fn test_parse_digit_words() {
         let result = parse_digit("eightwothree").unwrap();
-        assert_eq!(("wothree", "8"), result);
+        assert_eq!(("three", "82"), result);
     }
 
     #[test]
@@ -92,7 +100,7 @@ zoneight234
     #[test]
     fn test_parse_line_digits() {
         let result = parse_line_digits("eightwothree").unwrap();
-        assert_eq!(("", "83".to_string()), result);
+        assert_eq!(("", "823".to_string()), result);
         let result = parse_line_digits("abcone2threexyz").unwrap();
         assert_eq!(("xyz", "123".to_string()), result);
         let result = parse_line_digits("fkpsxsmchn3ninesevenseventfxxjdnqxtwo").unwrap();
