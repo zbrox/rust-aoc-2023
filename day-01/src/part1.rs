@@ -1,7 +1,7 @@
 #[tracing::instrument]
 pub fn solve(input: &str) -> anyhow::Result<String> {
     let sum: u32 = input
-        .split('\n')
+        .lines()
         .map(|line| line.chars().filter(|c| c.is_numeric()).collect::<String>())
         .map(|line| {
             format!(
